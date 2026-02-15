@@ -4,4 +4,4 @@
 ## Author: Inf0matics
 ## Version: 0.0.1
 
-PetBattleRecoder.lua
+PetBattleRecorder.lua
