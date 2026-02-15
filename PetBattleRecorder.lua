@@ -55,7 +55,7 @@ function CA:ToggleWindow()
 end
 
 -- Slash command registration
-SLASH_PETBATTLERECORDER1 = "/bpr"
+SLASH_PETBATTLERECORDER1 = "/pbr"
 
 SlashCmdList["PETBATTLERECORDER"] = function(msg)
     CA:ToggleWindow()
