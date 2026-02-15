@@ -85,5 +85,3 @@ SLASH_PBR1 = "/pbr"
 SlashCmdList["PBR"] = function()
     PBR:ToggleWindow()
 end
-
-PBR:ToggleWindow()
