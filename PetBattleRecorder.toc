@@ -1,7 +1,10 @@
 ## Interface: 120001
 ## Title: Pet Battle Recorder
-## Notes: Recorder and WowHead Formatter for Pet Battles
+## Notes: Records pet battles and exports to HTML format
 ## Author: Inf0matics
 ## Version: 0.0.1
 
 PetBattleRecorder.lua
+BattleRecorder.lua
+Export.lua
+UI.lua

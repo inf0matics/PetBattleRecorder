@@ -1,0 +1,381 @@
+print("Pet Battle Recorder - Init Start")
+
+local ae = aura_env -- Aura Environment
+local Aura = WeakAuras.regions[ae.id]
+local b = Aura.Button -- buttonframe
+local bf = Aura.BattleFrame -- buttonframe
+local EditBox = Aura.EditFrame -- EditFrame
+local battlelog = Aura.battlelog -- buttonfram
+local battleloadout = Aura.battleloadout -- buttonfram
+
+print("1")
+if battleloadout == nil then
+    battleloadout = ""
+end
+if battlelog == nil then
+    battlelog = {}
+end
+print("2")
+
+------ Edit Box -----
+if EditBox == nil then 
+    EditBox = {}
+    Aura.EditBox = EditBox
+end 
+print("3")
+
+function EditBox:Create()
+    local f = CreateFrame("Frame", nil, UIParent, "DialogBoxFrame")
+    self.Frame = f
+    f:SetPoint("CENTER")
+    f:SetSize(600, 500)
+    
+    f:SetBackdrop({
+            bgFile = "Interface\\DialogFrame\\UI-DialogBox-Background",
+            edgeFile = "Interface\\PVPFrame\\UI-Character-PVP-Highlight", -- this one is neat
+            edgeSize = 16,
+            insets = { left = 8, right = 6, top = 8, bottom = 8 },
+    })
+    f:SetBackdropBorderColor(0, .44, .87, 0.5) -- darkblue
+    
+    -- Movable
+    f:SetMovable(true)
+    f:SetClampedToScreen(true)
+    f:SetScript("OnMouseDown", function(frame, button)
+            if button == "LeftButton" then
+                frame:StartMoving()
+            end
+    end)
+    f:SetScript("OnMouseUp", f.StopMovingOrSizing)
+    
+    -- ScrollFrame
+    local sf = CreateFrame("ScrollFrame", nil, f, "UIPanelScrollFrameTemplate")
+    sf:SetPoint("LEFT", 16, 0)
+    sf:SetPoint("RIGHT", -32, 0)
+    sf:SetPoint("TOP", 0, -16)
+    sf:SetPoint("BOTTOM", f, "BOTTOM", 0, 50)
+    
+    -- EditBox
+    local eb = CreateFrame("EditBox", nil, sf)
+    self.EditBox = eb
+    eb:SetSize(sf:GetSize())
+    eb:SetMultiLine(true)
+    eb:SetAutoFocus(false) -- dont automatically focus
+    eb:SetFontObject("ChatFontNormal")
+    eb:SetScript("OnEscapePressed", eb.ClearFocus)
+    sf:SetScrollChild(eb)
+    
+    -- Resizable
+    f:SetResizable(true)
+    -- f:SetMinResize(150, 100)
+    local rb = CreateFrame("Button", nil, f)
+    rb:SetPoint("BOTTOMRIGHT", -6, 7)
+    rb:SetSize(16, 16)
+    rb:SetNormalTexture("Interface\\ChatFrame\\UI-ChatIM-SizeGrabber-Up")
+    rb:SetHighlightTexture("Interface\\ChatFrame\\UI-ChatIM-SizeGrabber-Highlight")
+    rb:SetPushedTexture("Interface\\ChatFrame\\UI-ChatIM-SizeGrabber-Down")
+    
+    rb:SetScript("OnMouseDown", function(frame, button)
+            if button == "LeftButton" then
+                f:StartSizing("BOTTOMRIGHT")
+                frame:GetHighlightTexture():Hide() -- more noticeable
+            end
+    end)
+    rb:SetScript("OnMouseUp", function(frame)
+            f:StopMovingOrSizing()
+            frame:GetHighlightTexture():Show()
+            eb:SetWidth(sf:GetWidth())
+    end)
+end
+print("4")
+
+function EditBox:Show(text)
+    if not self.EditBox then
+        self:Create()
+    end
+    self.EditBox:SetText(text)
+    self.Frame:Show()
+    self.EditBox:SetFocus()
+    self.EditBox:SetAutoFocus(true)
+    self.EditBox:HighlightText()
+end
+print("5")
+
+------ Functions -----
+local usedAbilities = {}
+local function GetCurrentLoadout()
+    usedAbilities = {}
+    local output = ""
+    for i = 1,3 do
+        -- Get Slot --> petGUID
+        petGUID, ability1, ability2, ability3, locked = C_PetJournal.GetPetLoadOutInfo(i)
+        abilities = {ability1, ability2, ability3}
+        
+        -- GUID --> pet
+        speciesID, customName, level, xp, maxXp, displayID, isFavorite, name, icon, petType, creatureID, sourceText, description, isWild, canBattle, tradable, unique, obtainable = C_PetJournal.GetPetInfoByPetID(petGUID)
+        
+        output = output .. "[npc=" .. creatureID .. "] ("
+        
+        idTable, levelTable = C_PetJournal.GetPetAbilityList(speciesID)
+        
+        for a = 1,3 do
+            abilityID = abilities[a]
+            
+            -- Find Slot
+            if abilityID == idTable[a] then 
+                abilityIndex = 1 
+            else 
+                abilityIndex = 2
+            end
+            
+            id, name, icon, maxCooldown, unparsedDescription, numTurns, petType, noStrongWeakHints = C_PetBattles.GetAbilityInfoByID(abilityID)
+            table.insert(usedAbilities, {
+                    name = name,
+                    id = id
+            })
+            
+            output = output .. abilityIndex
+            if a < 3 then
+                output = output .. "/"
+            end
+            --print(name)
+            --print(abilityID)
+            --print(abilityIndex)
+        end
+        
+        output = output .. ")"
+        if i < 3 then
+            output = output .. ", "
+        end
+    end
+    
+    return output
+end
+
+print("6")
+
+local function ActionFunc()
+    print("ActionFunc")
+    local text = GetCurrentLoadout()
+    
+    text = text .. "\n"
+    
+    -- INSERT FROM REPL.IT
+    
+    local round = "-1"
+    
+    local emptySpell = { name = "wait/pass/doesn't matter", id = 0 }
+    local spell = emptySpell
+    local enemyDied = nil
+    local myDied = nil
+    local enemySwitch = nil
+    local mySwitch = nil
+    local enemyMechanical = nil
+    local myMechanical = nil
+    
+    function clearVars()
+        emptySpell = { name = "wait/pass/doesn't matter", id = 0 }
+        spell = emptySpell
+        enemyDied = nil
+        myDied = nil
+        enemySwitch = nil
+        mySwitch = nil
+        enemyMechanical = nil
+        myMechanical = nil        
+        enemyUndeadRound = nil
+        myUndeadRound = nil    
+    end
+    
+    text = text .. "\n[ol]\n"
+    
+    function addRound(newRound)
+        if spell.id == 0 then
+            text = text .. "[li]" .. spell.name
+        else
+            text = text .. "[li][pet-ability=" .. spell.id .. "]"
+            --text = text .. " " .. spell.name
+        end
+        if enemyDied then text = text .. " > " .. enemyDied .. " dies" end
+        if enemyMechanical then text = text .. " > " .. enemyMechanical .. " mechanical applied" end
+        if enemySwitch then text = text .. " > Enemy switches to " .. enemySwitch end
+        if enemyUndeadRound then text = text .. " > " .. enemyUndeadRound .. " undead round" end
+        
+        if myDied then text = text .. " > " .. myDied .. " dies" end
+        if myMechanical then text = text .. " > " .. myMechanical .. " mechanical applied" end
+        if mySwitch then text = text .. " > Switch to " .. mySwitch end
+        if myUndeadRound then text = text .. " > " .. myUndeadRound .. " undead round" end
+        
+        text = text .. "[/li]\n"
+        
+        clearVars()
+    end
+    
+    for i = 1, #battlelog do
+        local msg = battlelog[i] 
+        
+        if msg:find("Round") then
+            local tmp, newRound = msg:match("(%w+)(.+)")
+            newRound = newRound:sub(2)
+            
+            if round ~= newRound then
+                if newRound ~= "1" then
+                    addRound(newRound)
+                else 
+                    clearVars()
+                end
+                round = newRound
+            end
+            
+        end
+        
+        if msg:find("died") then 
+            if msg:find("Your") then myDied = msg:sub(6, -7) end
+            if msg:find("Enemy") then enemyDied = msg:sub(7, -7) end
+        end
+        
+        if msg:find("your") and msg:find("%[Mechanical%]") then
+            myMechanical = myDied
+            myDied = nil
+        end
+        
+        if msg:find("enemy") and msg:find("%[Mechanical%]") then
+            enemyMechanical = enemyDied
+            enemyDied = nil
+        end
+        
+        if msg:find("applied") and msg:find("your") and msg:find("%[Damned%]") then
+            myUndeadRound = myDied
+            myDied = nil
+        end
+        
+        if msg:find("applied") and msg:find("enemy") and msg:find("%[Damned%]") then
+            enemyUndeadRound = enemyDied
+            enemyDied = nil
+        end
+        
+        if msg:find("active pet") then
+            if msg:find("enemy active") then enemySwitch = msg:sub(0, -26) end
+            if msg:find("your active") then mySwitch = msg:sub(0, -25) end
+        end
+        
+        for j = 1, #usedAbilities do
+            local abi = usedAbilities[j]
+            if spell.id == 0 and msg:find("%[" .. abi.name:gsub('%-', '%%%-') .. "%]") then
+                spell = abi
+            end
+        end
+    end
+    
+    addRound(-2)
+    
+    text = text .. "[/ol]\n"
+    
+    -- INSERT FROM REPL.IT
+    print(30)
+    if false then
+        print(31)
+        text = text .. "\n\nDebugLog:\n"
+        print(32)
+        for i, a in ipairs(usedAbilities) do
+            for k, v in pairs(a) do text = text .. v .. "\n" end 
+        end
+        print(33)
+        text = text .. "\n" .. table.concat(battlelog, "\n")
+    end
+    
+    print(34)
+    EditBox:Show(text)
+end
+
+
+print("7")
+
+-- Eventhandeler for Pet Battles
+local events = {}
+if bf == nil then 
+    bf = CreateFrame("Frame");
+    Aura.BattleFrame = bf -- save empty frame in global variable
+    
+    bf:RegisterEvent("PET_BATTLE_OPENING_START")
+    bf:RegisterEvent("PET_BATTLE_OPENING_DONE")
+end
+
+print("8")
+
+-- entering a pet battle
+function events:PET_BATTLE_OPENING_START(...)
+    battleloadout = GetCurrentLoadout()
+    Aura.battleloadout = battleloadout
+    battlelog = {}
+    Aura.battlelog = battlelog
+    print("Pet Battle Start Recording")
+end
+
+-- fires after the camera is done swinging around and as the battle UI comes up
+-- wipe the lastFight, note speciesID of participants and register for events to watch the battle
+function events:PET_BATTLE_OPENING_DONE(...)
+    --print("OPENING DONE")
+    bf:RegisterEvent("PET_BATTLE_CLOSE") -- to track when battle ends
+    bf:RegisterEvent("CHAT_MSG_PET_BATTLE_COMBAT_LOG") -- to track combat log entries
+    bf:RegisterEvent("PET_BATTLE_PET_ROUND_PLAYBACK_COMPLETE") -- to track battle round
+    bf:RegisterEvent("PET_BATTLE_FINAL_ROUND") -- to track result of battle
+end
+
+-- this event often fires twice at the end of a battle but only once when out of battle
+function events:PET_BATTLE_CLOSE(...)
+    if not C_PetBattles.IsInBattle() then
+        -- outside of battle, don't need these events registered
+        bf:UnregisterEvent("PET_BATTLE_CLOSE")    
+        bf:UnregisterEvent("PET_BATTLE_FINAL_ROUND")
+        bf:UnregisterEvent("PET_BATTLE_PET_ROUND_PLAYBACK_COMPLETE")
+        bf:UnregisterEvent("CHAT_MSG_PET_BATTLE_COMBAT_LOG")
+    end
+end
+
+-- this fires when the game is over; winner argument is 1 or 2 depending on who won, however
+-- 2 always wins if either side forfeits, so we check if pets are alive to tell if it was a
+-- regular loss or a forfeit
+function events:PET_BATTLE_FINAL_ROUND(winner)
+end
+
+-- when a round completes this fires with the round finished as the first argumnet
+-- it's actually one less than the current round but works out to be the last fought round because
+-- the game will advance to next round as it determines whether a battle is won
+function events:PET_BATTLE_PET_ROUND_PLAYBACK_COMPLETE(round)
+    -- print("Event Round: " .. round)
+end
+
+
+-- every line in the pet battle combat tab is from a CHAT_MSG_PET_BATTLE_COMBAT_LOG
+-- this will copy the line to the lastFight table
+function events:CHAT_MSG_PET_BATTLE_COMBAT_LOG(msg)
+    table.insert(battlelog, msg)
+    -- print(msg)
+end
+print("9")
+
+bf:SetScript("OnEvent", function(self, event, ...)
+        events[event](self, ...); -- call one of the functions above
+end);
+
+print("10")
+
+-- creates clickable Buttonframe with mouseover highlight texture
+if b == nil then
+    b = CreateFrame('Button', nil,Aura.region,'SecureActionButtonTemplate')
+    Aura.Button = b -- save buttonframe in global variable
+    
+    -- highlight texture (mouse over)
+    b.highlight=b:CreateTexture()
+    b.highlight:SetTexture('Interface/Buttons/UI-Panel-Button-Highlight2')
+    b.highlight:SetTexCoord(0,0.625, 0, 0.6875)
+    b.highlight:SetAllPoints(Aura.region)
+    
+    b:SetAllPoints()
+    b:SetAttribute('type', 'macro')
+    b:SetHighlightTexture(b.highlight)
+end
+print("11")
+
+b:SetScript("OnClick", ActionFunc)  
+print("Pet Battle Recorder - Init Done")
