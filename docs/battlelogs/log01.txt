@@ -1,0 +1,94 @@
+[npc=64899] (1/1/1), [npc=71163] (1/2/1), [npc=86447] (2/1/1)
+
+[ol]
+[li][pet-ability=647] > Enemy switches to Awakened Custodian > Switch to Mechanical Pandaren Dragonling[/li]
+[li][pet-ability=115][/li]
+[li][pet-ability=282] > Mechanical Pandaren Dragonling dies > Mechanical Pandaren Dragonling mechanical applied > Switch to Unborn Val'kyr[/li]
+[li][pet-ability=218][/li]
+[li][pet-ability=652] > Unborn Val'kyr dies > Switch to Ikky[/li]
+[li][pet-ability=919][/li]
+[li][pet-ability=581][/li]
+[li][pet-ability=218] > Awakened Custodian mechanical applied > Ikky dies[/li]
+[/ol]
+
+--- DebugLog ---
+
+Abilities:
+Breath
+115
+Bombing Run
+647
+Explode
+282
+Shadow Slash
+210
+Curse of Doom
+218
+Haunt
+652
+Quills
+184
+Black Claw
+919
+Flock
+581
+
+Battle Log:
+
+Mechanical Pandaren Dragonling is now your active pet.
+Awakened Custodian is now enemy active pet.
+Round 1
+[Amplify Magic] applied [Amplify Magic] to enemy team.
+[Bombing Run] dealt 41 damage to enemy Awakened Custodian.
+[Bombing Run] applied [Bomb] to enemy team.
+Round 2
+[Shock and Awe] dealt 720 damage to your Mechanical Pandaren Dragonling.
+[Shock and Awe] missed your Mechanical Pandaren Dragonling.
+[Breath] dealt 89 damage to enemy Awakened Custodian.
+Round 3
+[Chaos Beam] dealt 432 damage to your Mechanical Pandaren Dragonling.
+Your Mechanical Pandaren Dragonling died.
+[Failsafe] healed 155 damage from your Mechanical Pandaren Dragonling.
+[Failsafe] applied [Mechanical] to your Mechanical Pandaren Dragonling.
+[Explode] dealt 310 damage to enemy Awakened Custodian.
+[Explode] dealt 155 damage to your Mechanical Pandaren Dragonling.
+Your Mechanical Pandaren Dragonling died.
+[Amplify Magic] fades from enemy team.
+Round 3
+Unborn Val'kyr is now your active pet.
+Round 4
+[Chaos Beam] dealt 288 damage to your Unborn Val'kyr.
+[Curse of Doom] applied [Curse of Doom] to enemy Awakened Custodian.
+[Bomb] fades from enemy team.
+[Bomb] dealt 82 damage to enemy Awakened Custodian.
+Round 5
+[Amplify Magic] applied [Amplify Magic] to enemy team.
+[Haunt] applied [Haunt] to enemy Awakened Custodian.
+[Haunt] dealt 1274 damage to your Unborn Val'kyr.
+Your Unborn Val'kyr died.
+[Haunt] dealt 78 damage to enemy Awakened Custodian.
+Round 5
+Ikky is now your active pet.
+Round 6
+[Black Claw] applied [Black Claw] to enemy Awakened Custodian.
+[Chaos Beam] dealt 432 damage to your Ikky.
+[Haunt] dealt 214 damage to enemy Awakened Custodian.
+Round 7
+[Flock] dealt 162 damage to enemy Awakened Custodian.
+[Flock] dealt 162 damage to enemy Awakened Custodian.
+[Flock] dealt 162 damage to enemy Awakened Custodian.
+[Flock] applied [Shattered Defenses] to enemy Awakened Custodian.
+[Shock and Awe] dealt 720 damage to your Ikky.
+[Flying] fades from your Ikky.
+[Shock and Awe] missed your Ikky.
+[Haunt] dealt 292 damage to enemy Awakened Custodian.
+[Amplify Magic] fades from enemy team.
+Round 8
+[Chaos Beam] dealt 288 damage to your Ikky.
+Your Ikky died.
+[Curse of Doom] dealt 760 damage to enemy Awakened Custodian.
+[Haunt] dealt 292 damage to enemy Awakened Custodian.
+Enemy Awakened Custodian died.
+[Failsafe] healed 485 damage from enemy Awakened Custodian.
+[Failsafe] applied [Mechanical] to enemy Awakened Custodian.
+[Curse of Doom] fades from enemy Awakened Custodian.
