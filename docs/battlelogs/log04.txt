@@ -1,0 +1,103 @@
+[npc=64899] (1/1/1), [npc=71163] (1/2/1), [npc=86447] (2/1/1)
+
+[ol]
+[li][pet-ability=647] > Enemy switches to Guttergunk > Switch to Mechanical Pandaren Dragonling[/li]
+[li][pet-ability=115] > Mechanical Pandaren Dragonling mechanical applied[/li]
+[li]wait/pass/doesn't matter > Mechanical Pandaren Dragonling dies > Switch to Unborn Val'kyr[/li]
+[li][pet-ability=218][/li]
+[li][pet-ability=652] > Unborn Val'kyr dies > Switch to Ikky[/li]
+[li][pet-ability=919][/li]
+[li][pet-ability=581][/li]
+[li][pet-ability=581] > Guttergunk dies > Ikky dies[/li]
+[/ol]
+
+--- DebugLog ---
+
+Abilities:
+Breath
+115
+Bombing Run
+647
+Explode
+282
+Shadow Slash
+210
+Curse of Doom
+218
+Haunt
+652
+Quills
+184
+Black Claw
+919
+Flock
+581
+
+Battle Log:
+
+Mechanical Pandaren Dragonling is now your active pet.
+Guttergunk is now enemy active pet.
+Round 1
+[Swamp Mud] dealt 549 damage to your Mechanical Pandaren Dragonling (Strong).
+[Swamp Mud] changed the weather to [Mudslide].
+[Bombing Run] dealt 27 damage to enemy Guttergunk (Weak).
+[Bombing Run] applied [Bomb] to enemy team.
+Round 2
+[Slow Digestion] dealt 457 damage to your Mechanical Pandaren Dragonling (Strong).
+Your Mechanical Pandaren Dragonling died.
+[Failsafe] healed 155 damage from your Mechanical Pandaren Dragonling.
+[Failsafe] applied [Mechanical] to your Mechanical Pandaren Dragonling.
+[Breath] dealt 72 damage to enemy Guttergunk.
+Round 3
+[Swamp Mud] dealt 549 damage to your Mechanical Pandaren Dragonling (Strong).
+Your Mechanical Pandaren Dragonling died.
+[Mudslide] is no longer the weather.
+[Swamp Mud] changed the weather to [Mudslide].
+Round 3
+Unborn Val'kyr is now your active pet.
+[Mudslide] applied [Rooted] to your Unborn Val'kyr.
+Round 4
+[Poison Lash] dealt 152 damage to your Unborn Val'kyr.
+[Poison Lash] applied [Poisoned] to your Unborn Val'kyr.
+[Curse of Doom] applied [Curse of Doom] to enemy Guttergunk.
+[Poisoned] dealt 76 damage to your Unborn Val'kyr.
+[Bomb] fades from enemy team.
+[Bomb] dealt 54 damage to enemy Guttergunk (Weak).
+Round 5
+[Swamp Mud] dealt 366 damage to your Unborn Val'kyr.
+[Mudslide] is no longer the weather.
+[Swamp Mud] changed the weather to [Mudslide].
+[Haunt] applied [Haunt] to enemy Guttergunk.
+[Haunt] dealt 968 damage to your Unborn Val'kyr.
+Your Unborn Val'kyr died.
+[Haunt] dealt 78 damage to enemy Guttergunk.
+Round 5
+Ikky is now your active pet.
+[Mudslide] applied [Rooted] to your Ikky.
+Round 6
+[Black Claw] applied [Black Claw] to enemy Guttergunk.
+[Slow Digestion] dealt 762 damage to your Ikky.
+[Flying] fades from your Ikky.
+[Haunt] dealt 214 damage to enemy Guttergunk.
+Round 7
+[Swamp Mud] dealt 366 damage to your Ikky.
+[Mudslide] is no longer the weather.
+[Swamp Mud] changed the weather to [Mudslide].
+[Flock] dealt 162 damage to enemy Guttergunk.
+[Flock] dealt 162 damage to enemy Guttergunk.
+[Flock] dealt 283 damage to enemy Guttergunk (Critical).
+[Flock] applied [Shattered Defenses] to enemy Guttergunk.
+[Haunt] dealt 292 damage to enemy Guttergunk.
+Round 8
+[Poison Lash] dealt 152 damage to your Ikky.
+[Poison Lash] applied [Poisoned] to your Ikky.
+[Flock] dealt 222 damage to enemy Guttergunk.
+[Flock] dealt 222 damage to enemy Guttergunk.
+[Flock] dealt 222 damage to enemy Guttergunk.
+[Curse of Doom] dealt 760 damage to enemy Guttergunk.
+Enemy Guttergunk died.
+[Poisoned] dealt 76 damage to your Ikky.
+Your Ikky died.
+[Haunt] fades from enemy Guttergunk.
+[Haunt] healed 484 damage from your Unborn Val'kyr.
+[Battle Recovery] healed 539 damage from your Unborn Val'kyr.

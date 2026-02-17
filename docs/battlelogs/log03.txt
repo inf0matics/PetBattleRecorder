@@ -1,0 +1,119 @@
+[npc=86879] (2/1/2), [npc=88473] (2/1/2), [npc=26050] (1/1/2)
+
+[ol]
+[li][pet-ability=204] > Enemy switches to Rufus > Switch to Hydraling[/li]
+[li][pet-ability=424][/li]
+[li][pet-ability=424] > Rufus dies > Enemy switches to Takey-Take[/li]
+[li][pet-ability=513] > Hydraling dies > Switch to Fen Crab[/li]
+[li][pet-ability=429][/li]
+[li][pet-ability=429] > Takey-Take dies > Enemy switches to Bubs[/li]
+[li]wait/pass/doesn't matter > Fen Crab dies > Switch to Snarly[/li]
+[li][pet-ability=803][/li]
+[li][pet-ability=423][/li]
+[li][pet-ability=803][/li]
+[li][pet-ability=509] > Bubs dies[/li]
+[/ol]
+
+--- DebugLog ---
+
+Abilities:
+Tail Slap
+424
+Call Lightning
+204
+Whirlpool
+513
+Claw
+429
+Spiny Carapace
+1073
+Blood in the Water
+423
+Rip
+803
+Surge
+509
+Blood in the Water
+423
+
+Battle Log:
+
+Hydraling is now your active pet.
+Rufus is now enemy active pet.
+Round 1
+[Scratch] dealt 317 damage to your Hydraling.
+[Call Lightning] dealt 1042 damage to enemy Rufus (Strong).
+[Call Lightning] applied [Beast] to enemy Rufus.
+[Call Lightning] changed the weather to [Lightning Storm].
+Round 2
+[Scratch] dealt 396 damage to your Hydraling.
+[Lightning Storm] dealt 38 damage to your Hydraling.
+[Tail Slap] dealt 248 damage to enemy Rufus.
+[Lightning Storm] dealt 57 damage to enemy Rufus (Strong).
+Round 3
+[Scratch] dealt 396 damage to your Hydraling.
+[Lightning Storm] dealt 38 damage to your Hydraling.
+[Tail Slap] dealt 238 damage to enemy Rufus.
+[Lightning Storm] dealt 57 damage to enemy Rufus (Strong).
+Enemy Rufus died.
+Round 3
+Takey-Take is now enemy active pet.
+Round 4
+[Flamethrower] dealt 237 damage to your Hydraling.
+[Lightning Storm] dealt 38 damage to your Hydraling.
+[Flamethrower] applied [Flamethrower] to your team.
+[Whirlpool] applied [Whirlpool] to enemy team.
+[Flamethrower] dealt 39 damage to your Hydraling.
+Your Hydraling died.
+Round 4
+Fen Crab is now your active pet.
+Round 5
+[Flurry] dealt 158 damage to your Fen Crab.
+[Lightning Storm] dealt 38 damage to your Fen Crab.
+[Flurry] dealt 158 damage to your Fen Crab.
+[Lightning Storm] dealt 57 damage to your Fen Crab (Critical).
+[Flurry] dealt 158 damage to your Fen Crab.
+[Lightning Storm] dealt 38 damage to your Fen Crab.
+[Claw] dealt 643 damage to enemy Takey-Take (Strong).
+[Lightning Storm] dealt 38 damage to enemy Takey-Take.
+[Flamethrower] dealt 39 damage to your Fen Crab.
+[Lightning Storm] dealt 38 damage to your Fen Crab.
+Round 6
+[Scratch] dealt 317 damage to your Fen Crab.
+[Lightning Storm] dealt 38 damage to your Fen Crab.
+[Claw] dealt 494 damage to enemy Takey-Take (Strong).
+[Lightning Storm] dealt 38 damage to enemy Takey-Take.
+[Flamethrower] dealt 39 damage to your Fen Crab.
+[Lightning Storm] dealt 38 damage to your Fen Crab.
+[Whirlpool] dealt 463 damage to enemy Takey-Take.
+Enemy Takey-Take died.
+[Flamethrower] fades from your team.
+[Whirlpool] fades from enemy team.
+[Lightning Storm] is no longer the weather.
+Round 6
+Bubs is now enemy active pet.
+Round 7
+[Chomp] dealt 415 damage to your Fen Crab.
+Your Fen Crab died.
+Round 7
+Snarly is now your active pet.
+Round 8
+[Chomp] dealt 627 damage to your Snarly (Critical).
+[Rip] dealt 243 damage to enemy Bubs (Strong).
+[Rip] applied [Bleeding] to enemy Bubs.
+[Bleeding] dealt 152 damage to enemy Bubs (Strong).
+Round 9
+[Consume] dealt 117 damage to your Snarly (Weak).
+[Consume] healed 117 damage from enemy Bubs.
+[Blood in the Water] dealt 650 damage to enemy Bubs.
+[Bleeding] dealt 152 damage to enemy Bubs (Strong).
+Round 10
+[Acidic Goo] applied [Acidic Goo] to your Snarly.
+[Rip] dealt 243 damage to enemy Bubs (Strong).
+[Bleeding] dealt 152 damage to enemy Bubs (Strong).
+[Acidic Goo] dealt 46 damage to your Snarly.
+Round 11
+[Surge] dealt 243 damage to enemy Bubs.
+Enemy Bubs died.
+[Acidic Goo] dealt 46 damage to your Snarly.
+[Battle Recovery] healed 418 damage from your Snarly.
