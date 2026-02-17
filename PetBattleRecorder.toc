@@ -5,6 +5,6 @@
 ## Version: 0.0.1
 
 PetBattleRecorder.lua
-BattleRecorder.lua
-Export.lua
-UI.lua
+lua/BattleRecorder.lua
+lua/UI.lua
+core/Export.lua

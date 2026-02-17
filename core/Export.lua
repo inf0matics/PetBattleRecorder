@@ -1,6 +1,5 @@
 local PBR = PetBattleRecorder
 
-
 function PBR:InitExport()
     self.usedAbilities = {}
     self.round = "-1"
