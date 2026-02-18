@@ -1,0 +1,46 @@
+Unborn Val'kyr is now your active pet.
+Awakened Custodian is now enemy active pet.
+Round 1
+[Amplify Magic] applied [Amplify Magic] to enemy team.
+[Curse of Doom] applied [Curse of Doom] to enemy Awakened Custodian.
+Round 2
+[Shock and Awe] dealt 720 damage to your Unborn Val'kyr.
+[Shock and Awe] missed your Unborn Val'kyr.
+[Haunt] applied [Haunt] to enemy Awakened Custodian.
+[Haunt] dealt 842 damage to your Unborn Val'kyr.
+Your Unborn Val'kyr died.
+[Haunt] dealt 78 damage to enemy Awakened Custodian.
+Round 2
+Ikky is now your active pet.
+Round 3
+[Black Claw] applied [Black Claw] to enemy Awakened Custodian.
+[Chaos Beam] dealt 432 damage to your Ikky.
+[Haunt] dealt 214 damage to enemy Awakened Custodian.
+[Amplify Magic] fades from enemy team.
+Round 4
+[Flock] dealt 162 damage to enemy Awakened Custodian.
+[Flock] dealt 162 damage to enemy Awakened Custodian.
+[Flock] dealt 162 damage to enemy Awakened Custodian.
+[Flock] applied [Shattered Defenses] to enemy Awakened Custodian.
+[Chaos Beam] dealt 288 damage to your Ikky.
+[Flying] fades from your Ikky.
+[Haunt] dealt 292 damage to enemy Awakened Custodian.
+Round 5
+[Amplify Magic] applied [Amplify Magic] to enemy team.
+[Flock] dealt 222 damage to enemy Awakened Custodian.
+[Flock] dealt 222 damage to enemy Awakened Custodian.
+[Flock] dealt 222 damage to enemy Awakened Custodian.
+[Curse of Doom] dealt 760 damage to enemy Awakened Custodian.
+Enemy Awakened Custodian died.
+[Failsafe] healed 485 damage from enemy Awakened Custodian.
+[Failsafe] applied [Mechanical] to enemy Awakened Custodian.
+[Haunt] dealt 292 damage to enemy Awakened Custodian.
+[Curse of Doom] fades from enemy Awakened Custodian.
+Round 6
+[Chaos Beam] dealt 432 damage to your Ikky.
+[Flock] dealt 256 damage to enemy Awakened Custodian.
+Enemy Awakened Custodian died.
+[Haunt] fades from enemy Awakened Custodian.
+[Haunt] healed 421 damage from your Unborn Val'kyr.
+[Battle Recovery] healed 576 damage from your Ikky.
+[Battle Recovery] healed 571 damage from your Unborn Val'kyr.
