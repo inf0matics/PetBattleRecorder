@@ -1,46 +1,48 @@
 local assert = require("luassert")
 local BattleLogParser = require("core.BattleLogParser")
 
-describe("core.BattleLogParser", function()
-  it("check log01", function()
-    local loadout = require("spec.fixtures.Log01Loadout")
+local function readFile(path)
+  local file = io.open(path, "r")
+  assert.is_not_nil(file, "Could not open file: " .. path)
+
+  local content = file:read("*a")
+  file:close()
+
+  return content
+end
+
+local function parseLogFile(parser, path)
+  local file = io.open(path, "r")
+  assert.is_not_nil(file, "Could not open file: " .. path)
+
+  for line in file:lines() do
+    parser:parseLine(line)
+  end
+
+  file:close()
+end
+
+local function testBattleLog(id, expectedRound)
+  it("Testing log" .. id, function()
+    local loadout = require("spec.fixtures.Log" .. id .. "Loadout")
     local parser = BattleLogParser:new(loadout)
+    parseLogFile(
+      parser,
+      "spec/fixtures/Log" .. id .. ".txt"
+    )
 
-    local file = io.open('spec/fixtures/Log01.txt', "r")
-    assert.is_not_nil(file)
-    for line in file:lines() do
-      parser:parseLine(line)
-    end
+    assert.are.equal(expectedRound, parser.round)
 
-    assert.are.equal(parser.round, '8')
-    local resultFile = io.open('spec/fixtures/Log01Result.txt', "r")
-    local result = resultFile:read("*a")
-    assert.are.equal(parser:FinishedParsing(), result)
+    local expected = readFile(
+      "spec/fixtures/Log" .. id .. "Result.txt"
+    )
+
+    assert.are.equal(expected, parser:FinishedParsing())
   end)
+end
 
-  it("check log02", function()
-    local parser = BattleLogParser:new()
-    local log02filePath = 'spec/fixtures/log02.txt'
-
-    local file = io.open(log02filePath, "r")
-    assert.is_not_nil(file)
-    for line in file:lines() do
-      parser:parseLine(line)
-    end
-
-    assert.are.equal(parser.round, '6')
-  end)
-
-  it("check log03", function()
-    local parser = BattleLogParser:new()
-    local log02filePath = 'spec/fixtures/log03.txt'
-
-    local file = io.open(log02filePath, "r")
-    assert.is_not_nil(file)
-    for line in file:lines() do
-      parser:parseLine(line)
-    end
-
-    assert.are.equal(parser.round, '11')
-  end)
+describe("core.BattleLogParser", function()
+  testBattleLog("01", "8")
+  testBattleLog("02", "6")
+  testBattleLog("03", "11")
 end)

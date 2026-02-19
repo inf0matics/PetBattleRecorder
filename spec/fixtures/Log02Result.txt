@@ -1,0 +1,10 @@
+[npc=71163] (1/2/1), [npc=86447] (2/1/1), [npc=68659] (1/1/1)
+
+[ol]
+[li][pet-ability=218][/li]
+[li][pet-ability=652] > Unborn Val'kyr dies > Switch to Ikky[/li]
+[li][pet-ability=919][/li]
+[li][pet-ability=581][/li]
+[li][pet-ability=581] > Awakened Custodian mechanical applied[/li]
+[li][pet-ability=581] > Awakened Custodian dies[/li]
+[/ol]
