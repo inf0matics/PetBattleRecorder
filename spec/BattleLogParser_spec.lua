@@ -3,7 +3,8 @@ local BattleLogParser = require("core.BattleLogParser")
 
 describe("core.BattleLogParser", function()
   it("check log01", function()
-    local parser = BattleLogParser:new()
+    local abilities = require("spec.fixtures.Log01Abilities")
+    local parser = BattleLogParser:new(abilities)
     local log01filePath = 'spec/fixtures/log01.txt'
 
     local file = io.open(log01filePath, "r")
@@ -13,6 +14,7 @@ describe("core.BattleLogParser", function()
     end
 
     assert.are.equal(parser.round, '8')
+    print(parser:FinishedParsing())
   end)
 
   it("check log02", function()
