@@ -37,7 +37,7 @@ function PBR:GetLoadout()
                         id = id
                     })
                 else
-                    table.insert(loadoutSlots, 1)
+                    table.insert(loadoutSlots, 'x')
                 end
             end
 
