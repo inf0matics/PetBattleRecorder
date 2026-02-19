@@ -1,0 +1,12 @@
+[npc=64899] (1/1/1), [npc=71163] (1/2/1), [npc=86447] (2/1/1)
+
+[ol]
+[li][pet-ability=647][/li]
+[li][pet-ability=115][/li]
+[li][pet-ability=282] > Mechanical Pandaren Dragonling dies > Mechanical Pandaren Dragonling mechanical applied > Switch to Unborn Val'kyr[/li]
+[li][pet-ability=218][/li]
+[li][pet-ability=652] > Unborn Val'kyr dies > Switch to Ikky[/li]
+[li][pet-ability=919][/li]
+[li][pet-ability=581][/li]
+[li][pet-ability=218] > Awakened Custodian mechanical applied > Ikky dies[/li]
+[/ol]

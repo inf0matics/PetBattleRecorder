@@ -3,18 +3,19 @@ local BattleLogParser = require("core.BattleLogParser")
 
 describe("core.BattleLogParser", function()
   it("check log01", function()
-    local abilities = require("spec.fixtures.Log01Abilities")
-    local parser = BattleLogParser:new(abilities)
-    local log01filePath = 'spec/fixtures/log01.txt'
+    local loadout = require("spec.fixtures.Log01Loadout")
+    local parser = BattleLogParser:new(loadout)
 
-    local file = io.open(log01filePath, "r")
+    local file = io.open('spec/fixtures/Log01.txt', "r")
     assert.is_not_nil(file)
     for line in file:lines() do
       parser:parseLine(line)
     end
 
     assert.are.equal(parser.round, '8')
-    print(parser:FinishedParsing())
+    local resultFile = io.open('spec/fixtures/Log01Result.txt', "r")
+    local result = resultFile:read("*a")
+    assert.are.equal(parser:FinishedParsing(), result)
   end)
 
   it("check log02", function()

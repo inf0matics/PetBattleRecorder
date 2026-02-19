@@ -1,18 +1,29 @@
 local NO_ABILITY = { name = "wait/pass/doesn't matter", id = 0 }
 local BattleLogParser = {}
 
-function BattleLogParser:new(usedAbilities)
+function BattleLogParser:new(loadout)
   local obj = {}
   setmetatable(obj, self)
   self.__index = self
 
-  obj.usedAbilities = usedAbilities or {}
+  obj.loadout = loadout or {}
+  obj.usedAbilities = obj:CreateAbilitiesListFromLoadout(loadout or {})
   obj.round = "-1"
   obj.battleText = ""
 
   obj:ResetRoundVars()
 
   return obj
+end
+
+function BattleLogParser:CreateAbilitiesListFromLoadout(loadout)
+  local abilities = {}
+  for _, creature in ipairs(loadout) do
+    for _, ability in ipairs(creature.abilities) do
+      table.insert(abilities, ability)
+    end
+  end
+  return abilities
 end
 
 function BattleLogParser:ResetRoundVars()
@@ -36,15 +47,21 @@ end
 
 function BattleLogParser:FinishedParsing()
   self:GenerateRound()
-  local export = self:GetLoadout()
+  local export = self:GetLoadout() .. "\n\n"
   export = export .. '[ol]\n'
   export = export .. self.battleText
-  export = export .. '[ol]\n'
+  export = export .. '[/ol]\n'
   return export
 end
 
 function BattleLogParser:GetLoadout()
-  return ''
+  local parts = {}
+  for _, pet in ipairs(self.loadout) do
+    table.insert(parts,
+      "[npc=" .. pet.creatureID .. "] (" .. table.concat(pet.loadout, "/") .. ")"
+    )
+  end
+  return table.concat(parts, ", ")
 end
 
 function BattleLogParser:CheckForRound(line)
