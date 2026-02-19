@@ -128,7 +128,7 @@ function BattleLogParser:GenerateRound()
     if self.activeAbility.id == 0 then
         self.battleText  = self.battleText  .. "[li]" .. self.activeAbility.name
     else
-        self.battleText = self.battleText .. "[li][pet-ability=" .. self.activeAbility.id .. "]"
+        self.battleText = self.battleText .. "[li][pet-ability=" .. self.activeAbility.name .. "]"
     end
     if self.enemyDied then self.battleText = self.battleText .. " > " .. self.enemyDied .. " dies" end
     if self.enemyMechanical then self.battleText = self.battleText .. " > " .. self.enemyMechanical .. " mechanical applied" end
