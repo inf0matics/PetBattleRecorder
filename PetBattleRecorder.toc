@@ -4,7 +4,8 @@
 ## Author: Inf0matics
 ## Version: 0.0.1
 
+core/BattleLogParser.lua
 PetBattleRecorder.lua
 wow/BattleRecorder.lua
 wow/UI.lua
-core/Export.lua
+wow/Export.lua

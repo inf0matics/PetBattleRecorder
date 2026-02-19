@@ -1,5 +1,7 @@
 local NO_ABILITY = { name = "wait/pass/doesn't matter", id = 0 }
-local BattleLogParser = {}
+
+BattleLogParser = {}
+BattleLogParser.__index = BattleLogParser
 
 function BattleLogParser:new(loadout)
   local obj = {}
